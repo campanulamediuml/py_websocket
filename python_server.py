@@ -18,6 +18,7 @@ class websocket_thread(threading.Thread):
     def run(self):
         while True:
             try:
+                # data = str(input('input a data'))
                 data = self.connection.recv(1024)
                 if 0 == len(data):
                     continue
@@ -30,6 +31,7 @@ class websocket_thread(threading.Thread):
                 continue
             # message = self.username + " : " + data
             # notify(message)
+            data = str(input('input a data'))
             print("client : " + data)
             self.send_message(str(data))
 
@@ -146,6 +148,7 @@ def main():
         receivedData = str(clientSocket.recv(2048))
         print(receivedData)
         entities = receivedData.split("\\r\\n")
+        # print(entities)
         # print(entities[9].split(":")[1].strip())
         origin = str(entities[7].split(":", 1)[1])
         # print(origin)
@@ -175,4 +178,4 @@ def main():
         # clientSocket.send(bytes("sssssssssss", encoding="utf8"))
         # break
 
-
+main()
